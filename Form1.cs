@@ -25,7 +25,13 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           cargarCombos();
+            cargarCombos();
+            string query = "select * from marcas";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, conexion.ToSqlConnection());
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            
+            dataGridView1.DataSource = dt;
         }
 
        
@@ -145,6 +151,19 @@ namespace WindowsFormsApp1
                 Console.WriteLine(ex.Message);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var algo = dataGridView1.SelectedCells.ToString();
+            foreach (var i in dataGridView1.SelectedCells)
+            {
+                var t=i;
+            }
+            //txtMarcaNueva.Text = dataGridView1.SelectedCells[0].Value;
+        }
+
+
+
 
         /*private void ejecutarAdaptador(string query, SqlConnection conexion)
         {

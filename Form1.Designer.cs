@@ -33,6 +33,7 @@
             this.btnGuardarAuto = new System.Windows.Forms.Button();
             this.tabAutos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtAño = new System.Windows.Forms.DateTimePicker();
             this.txtPatente = new System.Windows.Forms.TextBox();
             this.lblPatente = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.lblFabricante = new System.Windows.Forms.Label();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnGuardarMarca = new System.Windows.Forms.Button();
             this.lblMarcaNueva = new System.Windows.Forms.Label();
             this.txtMarcaNueva = new System.Windows.Forms.TextBox();
@@ -50,10 +52,10 @@
             this.txtModeloNuevo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAño = new System.Windows.Forms.DateTimePicker();
             this.tabAutos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +94,7 @@
             this.tabAutos.Location = new System.Drawing.Point(12, 12);
             this.tabAutos.Name = "tabAutos";
             this.tabAutos.SelectedIndex = 0;
-            this.tabAutos.Size = new System.Drawing.Size(758, 426);
+            this.tabAutos.Size = new System.Drawing.Size(1078, 426);
             this.tabAutos.TabIndex = 4;
             // 
             // tabPage1
@@ -111,10 +113,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(750, 400);
+            this.tabPage1.Size = new System.Drawing.Size(1070, 400);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cargar auto";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtAño
+            // 
+            this.txtAño.CustomFormat = "yyyy";
+            this.txtAño.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtAño.Location = new System.Drawing.Point(92, 157);
+            this.txtAño.Name = "txtAño";
+            this.txtAño.ShowUpDown = true;
+            this.txtAño.Size = new System.Drawing.Size(65, 20);
+            this.txtAño.TabIndex = 12;
             // 
             // txtPatente
             // 
@@ -177,16 +189,28 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.btnGuardarMarca);
             this.tabPage2.Controls.Add(this.lblMarcaNueva);
             this.tabPage2.Controls.Add(this.txtMarcaNueva);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(750, 400);
+            this.tabPage2.Size = new System.Drawing.Size(1070, 400);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cargar marca";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(512, 39);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(480, 294);
+            this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnGuardarMarca
             // 
@@ -224,7 +248,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(750, 400);
+            this.tabPage3.Size = new System.Drawing.Size(1070, 400);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cargar Modelo";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -272,16 +296,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Modelo";
             // 
-            // txtAño
-            // 
-            this.txtAño.CustomFormat = "yyyy";
-            this.txtAño.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtAño.Location = new System.Drawing.Point(92, 157);
-            this.txtAño.Name = "txtAño";
-            this.txtAño.ShowUpDown = true;
-            this.txtAño.Size = new System.Drawing.Size(65, 20);
-            this.txtAño.TabIndex = 12;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +310,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -327,6 +342,7 @@
         private System.Windows.Forms.TextBox txtModeloNuevo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker txtAño;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
