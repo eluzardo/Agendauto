@@ -40,6 +40,8 @@ namespace WindowsFormsApp1
             conexion.abrir();
             adaptador = new SqlCommand(query, conexion.ToSqlConnection());
             dr = adaptador.ExecuteReader();
+            cboMarca.Items.Clear();
+            cboMarcaModelo.Items.Clear();
             while (dr.Read())
             {
                 cboMarca.Items.Add(dr[1].ToString());
@@ -53,6 +55,7 @@ namespace WindowsFormsApp1
             query = "select * from modelos";
             adaptador = new SqlCommand(query, conexion.ToSqlConnection());
             dr = adaptador.ExecuteReader();
+            cboModelo.Items.Clear();
             while (dr.Read())
             {
                 cboModelo.Items.Add(dr[1].ToString());
@@ -77,7 +80,7 @@ namespace WindowsFormsApp1
                 var anio= txtAño.Text.Trim().ToString();
                 string query = string.Format("insert into autos (patente,marca,modelo,anio) values ('{0}','{1}','{2}','{3}')", patente,marca, modelo, anio);
                 conexion.abrir();
-                ejecutarAdaptador(query,conexion.ToSqlConnection());
+                SqlCommand adaptador = new SqlCommand(query,conexion.ToSqlConnection());
                 conexion.cerrar();
                 txtPatente.Text = "";
                 cboMarca.Text = "";
@@ -97,7 +100,9 @@ namespace WindowsFormsApp1
             {
                 string query = string.Format("insert into marcas values ('{0}')", txtMarcaNueva.Text);
                 conexion.abrir();
-                ejecutarAdaptador( query,conexion.ToSqlConnection());
+                SqlCommand adaptador = new SqlCommand(query, conexion.ToSqlConnection());
+                adaptador.ExecuteNonQuery();
+                //ejecutarAdaptador( query,conexion.ToSqlConnection());
                 conexion.cerrar();
                 cargarCombos();
                 txtMarcaNueva.Text = "";
@@ -127,7 +132,8 @@ namespace WindowsFormsApp1
 
                 string query = string.Format("insert into modelos (modelo,idMarca) values ('{0}',{1})", modelo, id);
                 dr.Close();
-                ejecutarAdaptador(query, conexion.ToSqlConnection());
+                SqlCommand adaptador = new SqlCommand(query, conexion.ToSqlConnection());
+                adaptador.ExecuteNonQuery();
                 conexion.cerrar();
                 cargarCombos();
                 txtModeloNuevo.Text = "";
@@ -140,9 +146,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void ejecutarAdaptador(string query, SqlConnection conexion)
+        /*private void ejecutarAdaptador(string query, SqlConnection conexion)
         {
             SqlCommand adaptador = new SqlCommand(query, conexion);
-        }
+        }*/
     }
 }
